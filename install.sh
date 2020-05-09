@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-echo -e "\033[1;31mCreate your user...\033[0m"
-read -r -p "Username?" response
+echo -e "\033[1;31mUser creation - Enter a username:\033[0m"
+read response
 sudo adduser $response
 sudo usermod $response -aG sudo
 sudo su $response
@@ -27,7 +27,8 @@ echo -e "/var/lib/docker/containers/*/*.log {
   copytruncate
 }" | sudo tee --append /etc/logrotate.d/docker-container
 
-read -r -p "Delete user 'pi' (recommanded)? [Y/n]" response
+echo -e "\033[1;31mDelete user 'pi' (recommended)? [Y/n]\033[0m"
+read response
 response=${response,,} # tolower
 if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
   sudo deluser pi
