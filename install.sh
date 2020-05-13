@@ -20,3 +20,5 @@ echo -e "/var/lib/docker/containers/*/*.log {
   delaycompress
   copytruncate
 }" | sudo tee --append /etc/logrotate.d/docker-container
+
+echo -e "\033[1;31mDone!\033[0m"
